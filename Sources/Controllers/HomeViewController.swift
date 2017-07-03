@@ -9,22 +9,36 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
+    @IBOutlet weak var tweetTable: UITableView!
+    
+    var refreshControll: UIRefreshControl!
+    var tweets = [Tweet]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        GetTwitterClient.instance.client?.get(
-            "https://api.twitter.com/1.1/statuses/home_timeline.json",
-            parameters: ["count": 20],
-            success: { response in
-                guard let jsonString = response.dataString() else {
-                    return
-                }
-                
-                print(jsonString)
-
-        },
-            failure: nil)
+        
+        tweetTable.delegate = self
+        tweetTable.dataSource = self
+        tweetTable.estimatedRowHeight = 400.0
+        tweetTable.rowHeight = UITableViewAutomaticDimension
+        
+        refreshControll = UIRefreshControl()
+        refreshControll.addTarget(self, action: #selector(fetchTweets), for: .valueChanged)
+        tweetTable.insertSubview(refreshControll, at: 0)
+        
+        fetchTweets()
+    }
+    
+    func fetchTweets() {
+        
+        TweetWorkers.fetchTwentyTweets {
+            if let tweets = $0 {
+                self.tweets = tweets
+                self.tweetTable.reloadData()
+                self.refreshControll.endRefreshing()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +46,23 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+}
+
+extension HomeViewController: UITableViewDelegate {
+    
+}
+
+extension HomeViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetTableViewCell
+        
+        cell.display(tweet: tweets[indexPath.row])
+        
+        return cell
+    }
 }
