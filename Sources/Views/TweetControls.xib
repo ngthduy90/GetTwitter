@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TweetControls" customModule="GetTwitter" customModuleProvider="target">
+            <connections>
+                <outlet property="loveImageView" destination="iGq-N0-2yG" id="eVZ-xa-d53"/>
+                <outlet property="loveQuantityLabel" destination="Nw8-eF-IUZ" id="3GZ-cR-fzN"/>
+                <outlet property="replyImageView" destination="vfg-hq-HWA" id="4bX-ae-AVz"/>
+                <outlet property="replyQuantityLabel" destination="aPn-GW-CGf" id="n2a-uT-Wme"/>
+                <outlet property="retweetImageView" destination="NAA-ey-sCX" id="b6o-FW-brv"/>
+                <outlet property="retweetQuantityLabel" destination="2gt-cZ-DfX" id="pNd-C3-tEv"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rTr-Se-s2X">
+            <rect key="frame" x="0.0" y="0.0" width="402" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="JCi-ge-RYc">
+                    <rect key="frame" x="0.0" y="0.0" width="402" height="40"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMk-Fp-Qm4">
+                            <rect key="frame" x="0.0" y="0.0" width="134" height="40"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reply" highlightedImage="reply_highlight" translatesAutoresizingMaskIntoConstraints="NO" id="vfg-hq-HWA">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="vfg-hq-HWA" secondAttribute="height" multiplier="1:1" id="Tdk-Wr-RTz"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPn-GW-CGf">
+                                    <rect key="frame" x="40" y="0.0" width="94" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="aPn-GW-CGf" firstAttribute="leading" secondItem="vfg-hq-HWA" secondAttribute="trailing" id="DWH-BJ-gkk"/>
+                                <constraint firstAttribute="bottom" secondItem="vfg-hq-HWA" secondAttribute="bottom" id="H6Z-Zc-tJK"/>
+                                <constraint firstAttribute="bottom" secondItem="aPn-GW-CGf" secondAttribute="bottom" id="NLQ-ZJ-zpV"/>
+                                <constraint firstAttribute="trailing" secondItem="aPn-GW-CGf" secondAttribute="trailing" id="S1J-uw-4ZL"/>
+                                <constraint firstItem="vfg-hq-HWA" firstAttribute="leading" secondItem="pMk-Fp-Qm4" secondAttribute="leading" id="ehG-Ls-3NN"/>
+                                <constraint firstItem="vfg-hq-HWA" firstAttribute="top" secondItem="pMk-Fp-Qm4" secondAttribute="top" id="ozV-J3-uzj"/>
+                                <constraint firstItem="aPn-GW-CGf" firstAttribute="top" secondItem="pMk-Fp-Qm4" secondAttribute="top" id="sx6-S9-vwB"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="UYK-tI-l6v" appends="YES" id="weG-ji-NGI"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KuV-ZO-iGI">
+                            <rect key="frame" x="134" y="0.0" width="134" height="40"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="retweet" highlightedImage="retweet_highlight" translatesAutoresizingMaskIntoConstraints="NO" id="NAA-ey-sCX">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="NAA-ey-sCX" secondAttribute="height" multiplier="1:1" id="gYZ-2L-A3Z"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gt-cZ-DfX">
+                                    <rect key="frame" x="40" y="0.0" width="94" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="2gt-cZ-DfX" firstAttribute="leading" secondItem="NAA-ey-sCX" secondAttribute="trailing" id="3pu-Fd-wBx"/>
+                                <constraint firstItem="NAA-ey-sCX" firstAttribute="top" secondItem="KuV-ZO-iGI" secondAttribute="top" id="5ap-pv-hwv"/>
+                                <constraint firstAttribute="bottom" secondItem="2gt-cZ-DfX" secondAttribute="bottom" id="5zU-fg-kJ7"/>
+                                <constraint firstItem="NAA-ey-sCX" firstAttribute="leading" secondItem="KuV-ZO-iGI" secondAttribute="leading" id="Gvg-sY-2NI"/>
+                                <constraint firstAttribute="trailing" secondItem="2gt-cZ-DfX" secondAttribute="trailing" id="Mc2-Dh-Xaj"/>
+                                <constraint firstItem="2gt-cZ-DfX" firstAttribute="top" secondItem="KuV-ZO-iGI" secondAttribute="top" id="Muy-C6-ca5"/>
+                                <constraint firstAttribute="bottom" secondItem="NAA-ey-sCX" secondAttribute="bottom" id="hO6-Ed-7Fa"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="pXu-yQ-BlP" appends="YES" id="v76-5w-f27"/>
+                            </connections>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uhd-TT-kTc">
+                            <rect key="frame" x="268" y="0.0" width="134" height="40"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love" highlightedImage="love_highlight" translatesAutoresizingMaskIntoConstraints="NO" id="iGq-N0-2yG">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="iGq-N0-2yG" secondAttribute="height" multiplier="1:1" id="N1m-Lc-lNE"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nw8-eF-IUZ">
+                                    <rect key="frame" x="40" y="0.0" width="94" height="40"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstItem="iGq-N0-2yG" firstAttribute="top" secondItem="Uhd-TT-kTc" secondAttribute="top" id="0AC-BH-REk"/>
+                                <constraint firstAttribute="bottom" secondItem="Nw8-eF-IUZ" secondAttribute="bottom" id="1BD-LI-feh"/>
+                                <constraint firstItem="Nw8-eF-IUZ" firstAttribute="leading" secondItem="iGq-N0-2yG" secondAttribute="trailing" id="4Cj-jr-VAe"/>
+                                <constraint firstItem="iGq-N0-2yG" firstAttribute="leading" secondItem="Uhd-TT-kTc" secondAttribute="leading" id="Dw5-xZ-lIz"/>
+                                <constraint firstItem="Nw8-eF-IUZ" firstAttribute="top" secondItem="Uhd-TT-kTc" secondAttribute="top" id="JCq-Oa-Fzg"/>
+                                <constraint firstAttribute="trailing" secondItem="Nw8-eF-IUZ" secondAttribute="trailing" id="XCN-PK-2Z0"/>
+                                <constraint firstAttribute="bottom" secondItem="iGq-N0-2yG" secondAttribute="bottom" id="nPf-cW-iCl"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="API-Rd-AH6" appends="YES" id="Xc9-1I-GSJ"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="JCi-ge-RYc" secondAttribute="bottom" id="6xi-E0-696"/>
+                <constraint firstAttribute="trailing" secondItem="JCi-ge-RYc" secondAttribute="trailing" id="8y1-kt-nDY"/>
+                <constraint firstItem="JCi-ge-RYc" firstAttribute="top" secondItem="rTr-Se-s2X" secondAttribute="top" id="lbZ-vl-o0J"/>
+                <constraint firstItem="JCi-ge-RYc" firstAttribute="leading" secondItem="rTr-Se-s2X" secondAttribute="leading" id="s3q-xU-dek"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-255" y="238"/>
+        </view>
+        <tapGestureRecognizer id="UYK-tI-l6v">
+            <connections>
+                <action selector="didTapReply:" destination="-1" id="Vh5-5V-RYA"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="pXu-yQ-BlP">
+            <connections>
+                <action selector="didTapRetweet:" destination="-1" id="6rg-1r-qfY"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="API-Rd-AH6">
+            <connections>
+                <action selector="didTapLove:" destination="-1" id="98g-Dn-bOb"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="love" width="30" height="30"/>
+        <image name="love_highlight" width="30" height="30"/>
+        <image name="reply" width="30" height="30"/>
+        <image name="reply_highlight" width="30" height="30"/>
+        <image name="retweet" width="30" height="30"/>
+        <image name="retweet_highlight" width="30" height="30"/>
+    </resources>
+</document>

@@ -40,6 +40,8 @@ class LoginViewController: UIViewController {
                     userId: parameters["user_id"] as? String ?? "-1"
                 )
                 
+                UserWorkers.verifyCredentials()
+                
                 self.performSegue(withIdentifier: Constants.Segue.HomeSegue, sender: nil)
                 
         }, failure: { error in
@@ -59,6 +61,8 @@ class LoginViewController: UIViewController {
         guard GetTwitterClient.instance.client != nil else {
             return
         }
+        
+        UserWorkers.verifyCredentials()
         
         self.performSegue(withIdentifier: Constants.Segue.HomeSegue, sender: nil)
     }

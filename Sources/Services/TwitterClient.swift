@@ -11,8 +11,8 @@ import OAuthSwift
 import SwiftyJSON
 
 struct GetTwitterAPIConsole {
-    var consumerKey = "cdgNdFWRl21StzmI247ZcbyoB"
-    var consumerSecret = "KbsM3XkxrnOQkynyt1fTPZgnHWwxjsZg9zDcy7D32ceEhWkqtu"
+    var consumerKey = "QQykmxcSzF16q1kba6Ah17i04"
+    var consumerSecret = "4KBV9MQVrLKPr5rTy5b0IOX2zk5VaAePfIUEeM0IwXGPj0xCrD"
     var oauthRequestTokenURL: String
     var oauthAuthorizeUrl: String
     var oauthAccessTokenUrl: String
@@ -91,18 +91,12 @@ class GetTwitterClient {
                  completion: @escaping (GetTwitterResponse) -> ()) {
         
         let fullUrlString = "\(baseUrl)\(urlString)"
-        
+                
         client?.request(fullUrlString,
                         
                         method: method,
                         
                         parameters: parameters ?? [:],
-                        
-                        headers: nil,
-                        
-                        body: nil,
-                        
-                        checkTokenExpiration: false,
                         
                         success: { response in
                             
@@ -118,7 +112,39 @@ class GetTwitterClient {
                                 completion(GetTwitterResponse.empty)
                             }
         },
-                        failure: { error -> Void in completion(.error(error)) })
+                        failure: { error -> Void in
+                            completion(.error(error))
+        })
+        
+    }
+    
+    func post(urlString: String,
+              parameters: [String: Any]?,
+              completion: @escaping (GetTwitterResponse) -> ()) {
+        
+        let fullUrlString = "\(baseUrl)\(urlString)"
+        
+        _ = client?.post(fullUrlString,
+                     
+                     parameters: parameters ?? [:],
+                     
+                     success: { response in
+                        
+                        guard let jsonString = response.dataString() else {
+                            completion(GetTwitterResponse.empty)
+                            return
+                        }
+                        
+                        if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
+                            
+                            completion(.success(JSON(data: dataFromString)))
+                        } else {
+                            completion(GetTwitterResponse.empty)
+                        }
+        },
+                     failure: { error -> Void in
+                        completion(.error(error))
+        })
         
     }
 }

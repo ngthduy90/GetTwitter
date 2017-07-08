@@ -30,6 +30,19 @@ class HomeViewController: UIViewController {
         fetchTweets()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let composeVC = segue.destination as? ComposeViewController {
+            composeVC.delegate = self
+        }
+        
+        if let detailVC = segue.destination as? DetailViewController,
+            let tweet = sender as? Tweet {
+            
+            
+        }
+    }
+    
     func fetchTweets() {
         
         TweetWorkers.fetchTwentyTweets {
@@ -40,16 +53,19 @@ class HomeViewController: UIViewController {
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func didTapCompose(_ sender: UIButton) {
+        performSegue(withIdentifier: "PresentComposeSegue", sender: nil)
     }
 
 }
 
 extension HomeViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: "TweetDetailSegue", sender: tweets[indexPath.row])
+    }
 }
 
 extension HomeViewController: UITableViewDataSource {
@@ -64,5 +80,13 @@ extension HomeViewController: UITableViewDataSource {
         cell.display(tweet: tweets[indexPath.row])
         
         return cell
+    }
+}
+
+extension HomeViewController: ComposeViewControllerDelegate {
+    
+    func composeVC(update tweet: Tweet) {
+        tweets.insert(tweet, at: 0)
+        tweetTable.reloadData()
     }
 }

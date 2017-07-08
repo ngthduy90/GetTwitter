@@ -25,10 +25,15 @@ class User {
         
         displayName = json["name"].string ?? ""
         screenName = json["screen_name"].string ?? ""
-        profileImageUrl = json["profile_image_url_https"].string ?? ""
+        profileImageUrl = User.replaceBiggerImage(url: json["profile_image_url_https"].string)
         
         isProtected = json["protected"].bool ?? false
         isVerified = json["verified"].bool ?? false
 
+    }
+    
+    class func replaceBiggerImage(url string: String?) -> String {
+        
+        return string?.replacingOccurrences(of: "_normal.", with: "_bigger.") ?? ""
     }
 }

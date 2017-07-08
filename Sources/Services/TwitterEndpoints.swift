@@ -20,4 +20,6 @@ struct TwitterEndpoints {
     
     static let UserTimeLine = "1.1/statuses/user_timeline.json"
     
+    static let UserCredentials = "1.1/account/verify_credentials.json"
+    
 }

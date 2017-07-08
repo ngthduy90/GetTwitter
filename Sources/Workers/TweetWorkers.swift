@@ -32,4 +32,21 @@ class TweetWorkers {
         }
     }
     
+    class func postNewTweet(_ content: String, completion: @escaping (Tweet?) -> Void) {
+        
+        GetTwitterClient.instance.post(urlString: TwitterEndpoints.UpdateTweet,
+                                       parameters: ["status": content]) { response in
+            switch response {
+            case .success(let result):
+                completion(Tweet(from: result))
+                break
+                
+            default:
+                completion(nil)
+                break
+                
+            }
+        }
+    }
+    
 }
